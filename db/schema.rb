@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013151137) do
+ActiveRecord::Schema.define(version: 20141013163655) do
 
   create_table "documents", force: true do |t|
     t.string   "title"
@@ -28,5 +28,14 @@ ActiveRecord::Schema.define(version: 20141013151137) do
   end
 
   add_index "keywords", ["document_id"], name: "index_keywords_on_document_id", using: :btree
+
+  create_table "topics", force: true do |t|
+    t.string   "topic"
+    t.integer  "document_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["document_id"], name: "index_topics_on_document_id", using: :btree
 
 end

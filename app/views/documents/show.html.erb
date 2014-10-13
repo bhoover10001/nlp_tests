@@ -9,10 +9,18 @@
 </p>
 <% if @document.keywords.length > 0%>
 	<h2>Keywords</h2>
-	<%= @document.keywords.first.keyword %>
-	<% @document.keywords[1..-1].each do |kw| %>
-		 , <%= kw.keyword %>
+	<% @document.keywords[0..-2].each do |keyword| %>
+		 <%= keyword.keyword %>,
 	<% end %>
+	<%= @document.keywords.last.keyword %>
+<% end %>
+
+<% if @document.topics.length > 0%>
+	<h2>Topics</h2>
+	<% @document.topics[0..-2].each do |topic| %>
+		 <%= topic.topic %>,
+	<% end %>
+	<%= @document.topics.last.topic %>
 <% end %>
 
 <h2>Add a Keyword:</h2>
@@ -20,6 +28,17 @@
   <p>
     <%= f.label :keyword %><br>
     <%= f.text_field :keyword %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<h2>Add a Topic:</h2>
+<%= form_for([@document, @document.topics.build]) do |f| %>
+  <p>
+    <%= f.label :topic %><br>
+    <%= f.text_field :topic %>
   </p>
   <p>
     <%= f.submit %>
