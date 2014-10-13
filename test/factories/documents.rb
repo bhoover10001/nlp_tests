@@ -1,4 +1,3 @@
-includes FactoryGirl::Syntax::Methods
 
 FactoryGirl.define do
   factory :document do
