@@ -23,27 +23,4 @@
   <%= @document.text %>
 </p>
 
-<h2>Add a Keyword:</h2>
-<%= form_for([@document, @document.keywords.build]) do |f| %>
-  <p>
-    <%= f.label :keyword %><br>
-    <%= f.text_field :keyword %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<h2>Add a Topic:</h2>
-<%= form_for([@document, @document.topics.build]) do |f| %>
-  <p>
-    <%= f.label :topic %><br>
-    <%= f.text_field :topic %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
 <%= link_to 'Back', documents_path %>
-| <%= link_to 'Edit', edit_document_path(@document) %>

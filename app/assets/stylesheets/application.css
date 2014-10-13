@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+table {    
+	border-spacing: 0;
+    border-collapse: collapse;
+}
+td {
+	border:none;
+	padding-left:10px
+}
+tr:nth-child(6n+2) {background: #C0C0C0}
+tr:nth-child(6n+3) {background: #C0C0C0}
+tr:nth-child(6n+4) {background: #C0C0C0}

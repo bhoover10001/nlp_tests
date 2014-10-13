@@ -1,21 +1,41 @@
 <h1>Listing Documents</h1>
- 
+<%= link_to 'New Document', new_document_path %>
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
- 
-  <% @documents.each do |document| %>
-    <tr>
-      <td><%= document.title %></td>
-      <td><%= document.text %></td>
-      <td><%= link_to 'Show', document_path(document) %></td>
-      <td><%= link_to 'Edit', edit_document_path(document) %></td>
-      <td><%= link_to 'Destroy', document_path(document),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
+	<tr>
+		<th colspan="2">Documents</th>
+	</tr>
+
+	<% @documents.each do |document| %>
+	<tr>
+		<td colspan="2"><%= document.title %></td>
+		<td><%= link_to 'Show', document_path(document) %></td>
+		<td><%= link_to 'Destroy', document_path(document),
+		method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+	<tr>
+		<td><strong>Key Words:</strong></td>
+		<td><% if document.keywords.length > 0%>
+				<% document.keywords[0..-2].each do |keyword| %>
+					<%= keyword.keyword %>,
+				<% end %>
+				<%= document.keywords.last.keyword %>
+			<% end %> 
+		</td>
+		<td colspan="2"></td>
+	</tr>
+	<tr>
+		<td><strong>Topics:</strong></td>
+		<td><% if document.topics.length > 0%>
+				<% document.topics[0..-2].each do |topic| %>
+					<%= topic.topic %>,
+				<% end %>
+				<%= document.topics.last.topic %>
+			<% else %>
+				No topics found
+			<% end %> 
+		</td>
+		<td colspan="2"></td>
+	</tr>
+	<% end %>
 </table>
 
-<%= link_to 'New Document', new_document_path %>
