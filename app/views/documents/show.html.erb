@@ -1,11 +1,6 @@
 <p>
-  <strong>Title:</strong>
+  <h2>Title:</h2>
   <%= @document.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @document.text %>
 </p>
 <% if @document.keywords.length > 0%>
 	<h2>Keywords</h2>
@@ -22,6 +17,11 @@
 	<% end %>
 	<%= @document.topics.last.topic %>
 <% end %>
+
+<p>
+  <h2>Text:</h2>
+  <%= @document.text %>
+</p>
 
 <h2>Add a Keyword:</h2>
 <%= form_for([@document, @document.keywords.build]) do |f| %>

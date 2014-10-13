@@ -16,11 +16,28 @@ class DocumentsControllerTest < ActionController::TestCase
     assert_equal(assigns["document"], document)
   end
   
+  # NOTE - This test is highly depenedent on the training data currently located in collections/preses_releases.
+  # If any of those files change, the result will also change. Based on the training data, the current answers are deterministic.
   test "should create document" do
     document = build(:document)
     assert_difference('Document.count') do
-      post :create, document: {title: document.title, text: document.text}
+      post :create, document: {url: document.url}
     end
+    assert_equal(6, assigns[:document].keywords.length)
+    expectedKeywords = Set.new ["expansion", "data", "research", "mutation", "copy", "number"]
+    expectedTopics = Set.new ["united states of america", "corporate/industrial", "medicine"]
+    actualKeywords = Set.new
+    assigns[:document].keywords.each do |keyword|
+      puts keyword.keyword.to_s
+      actualKeywords.add(keyword.keyword.to_s)
+    end
+    actualTopics = Set.new
+    assigns[:document].topics.each do |topic|
+      puts topic.topic.to_s
+      actualTopics.add(topic.topic.to_s)
+    end
+    assert expectedKeywords == actualKeywords
+    assert expectedTopics == actualTopics
     assert_redirected_to document_path(assigns(:document))
   end
   
