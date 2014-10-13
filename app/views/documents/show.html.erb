@@ -7,5 +7,24 @@
   <strong>Text:</strong>
   <%= @document.text %>
 </p>
+<% if @document.keywords.length > 0%>
+	<h2>Keywords</h2>
+	<%= @document.keywords.first.keyword %>
+	<% @document.keywords[1..-1].each do |kw| %>
+		 , <%= kw.keyword %>
+	<% end %>
+<% end %>
+
+<h2>Add a Keyword:</h2>
+<%= form_for([@document, @document.keywords.build]) do |f| %>
+  <p>
+    <%= f.label :keyword %><br>
+    <%= f.text_field :keyword %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Back', documents_path %>
+| <%= link_to 'Edit', edit_document_path(@document) %>

@@ -43,9 +43,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'treat'
+
+group :development, :test do 
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda'
+end 
+
 group :test do
   gem 'cucumber-rails', :require => false
-  gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
 end

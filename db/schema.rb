@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012225757) do
+ActiveRecord::Schema.define(version: 20141013151137) do
 
   create_table "documents", force: true do |t|
     t.string   "title"
@@ -19,5 +19,14 @@ ActiveRecord::Schema.define(version: 20141012225757) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "keywords", force: true do |t|
+    t.string   "keyword"
+    t.integer  "document_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "keywords", ["document_id"], name: "index_keywords_on_document_id", using: :btree
 
 end

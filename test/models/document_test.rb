@@ -12,6 +12,6 @@ class DocumentTest < ActiveSupport::TestCase
   test "should be able to save the document" do
     document = FactoryGirl.build(:document)
     assert document.save, "Saved the document correctly"
-    assert_equal(document.created_at, Time.now)
+    assert_not_nil document.created_at
   end
 end
