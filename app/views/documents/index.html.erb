@@ -1,0 +1,18 @@
+<h1>Listing Documents</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @documents.each do |document| %>
+    <tr>
+      <td><%= document.title %></td>
+      <td><%= document.text %></td>
+      <td><%= document.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Document', new_document_path %>
